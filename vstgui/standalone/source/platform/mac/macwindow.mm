@@ -443,7 +443,21 @@ void Window::activate ()
 //------------------------------------------------------------------------
 void Window::center ()
 {
+#if 0
 	[nsWindow center];
+#else
+	NSScreen *screen = [nsWindow screen];
+	if (screen) {
+		NSRect screenFrame = [screen frame];
+		NSRect windowFrame = [nsWindow frame];
+
+		CGFloat xPos = (NSWidth(screenFrame) - NSWidth(windowFrame)) / 2;
+		CGFloat yPos = (NSHeight(screenFrame) - NSHeight(windowFrame)) / 2;
+
+		NSPoint newOrigin = NSMakePoint(xPos, yPos);
+		[nsWindow setFrameOrigin:newOrigin];
+	}
+#endif
 }
 
 } // Mac
