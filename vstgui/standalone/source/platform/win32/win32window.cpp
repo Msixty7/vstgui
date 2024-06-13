@@ -1044,8 +1044,8 @@ void Window::center ()
 	info.cbSize = sizeof (MONITORINFO);
 	GetMonitorInfo (monitor, &info);
 	CRect monitorRect {
-	    static_cast<CCoord> (info.rcWork.left), static_cast<CCoord> (info.rcWork.top),
-	    static_cast<CCoord> (info.rcWork.right), static_cast<CCoord> (info.rcWork.bottom)};
+	    static_cast<CCoord> (info.rcMonitor.left), static_cast<CCoord> (info.rcMonitor.top),
+	    static_cast<CCoord> (info.rcMonitor.right), static_cast<CCoord> (info.rcMonitor.bottom)};
 	CRect windowRect;
 	windowRect.setWidth (getSize ().x * dpiScale);
 	windowRect.setHeight (getSize ().y * dpiScale);
